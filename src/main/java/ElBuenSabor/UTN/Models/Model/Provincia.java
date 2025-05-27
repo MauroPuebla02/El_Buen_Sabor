@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -19,7 +18,7 @@ public class Provincia extends EntityBean {
     private String nombre;
 
     @OneToMany(mappedBy="provincia",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Localidad> localidad = new ArrayList<>();
+    private List<Localidad> localidades;
 
     @ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
     @JoinColumn(name = "pais_id")

@@ -33,7 +33,7 @@ public class Usuario extends EntityBean{
 
     @OneToOne
     @JoinColumn(name = "usuario_a0_id")
-    private UsuarioA0 usuarioA0;
+    private UsuarioA0 usuario_A0;
 
     @OneToOne
     @JoinColumn(name = "imagen_id")
