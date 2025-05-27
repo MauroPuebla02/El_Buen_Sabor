@@ -17,6 +17,9 @@ import java.util.List;
 @SuperBuilder
 @Entity
 public class Empresa extends EntityBean {
+
+    private String nombre,razon_social,cuil;
+
     @OneToMany(mappedBy = "empresa")
     private List<Sucursal> sucursales;
 }

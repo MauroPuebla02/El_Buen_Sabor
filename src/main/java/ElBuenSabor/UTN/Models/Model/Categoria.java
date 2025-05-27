@@ -20,8 +20,8 @@ public class Categoria extends EntityBean{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_padre_id")
-    private Categoria categoriaPadre;
+    private Categoria categoria_padre;
 
     @OneToMany(mappedBy = "categoriaPadre", cascade = CascadeType.ALL)
-    private List<Categoria> categoriasHijas = new ArrayList<>();
+    private List<Categoria> categorias_hijas = new ArrayList<>();
 }

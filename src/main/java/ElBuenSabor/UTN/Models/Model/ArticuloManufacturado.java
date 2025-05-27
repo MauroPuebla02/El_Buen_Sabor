@@ -17,7 +17,7 @@ import java.util.List;
 @Entity
 public class ArticuloManufacturado extends Articulo {
     private String descripcion,preparacion;
-    private Integer tiempoEstimadoEnMinutos;
+    private Integer tiempo_estimado_en_minutos;
 
     @OneToMany(mappedBy = "articuloManufacturado")
     private List<ArticuloManufacturadoDetalle> detalles;

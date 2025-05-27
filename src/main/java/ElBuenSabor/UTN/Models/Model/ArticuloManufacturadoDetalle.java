@@ -19,9 +19,9 @@ public class ArticuloManufacturadoDetalle extends EntityBean{
 
     @ManyToOne
     @JoinColumn(name = "articulo_manufacturado_id")
-    private ArticuloManufacturado articuloManufacturado;
+    private ArticuloManufacturado articulo_manufacturado;
 
     @ManyToOne
     @JoinColumn(name = "articulo_insumo_id")
-    private ArticuloInsumo articuloInsumo;
+    private ArticuloInsumo articulo_insumo;
 }

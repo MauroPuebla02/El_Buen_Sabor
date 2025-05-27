@@ -19,5 +19,5 @@ public class ArticuloInsumo extends Articulo {
     private boolean es_para_elaborar;
 
     @OneToMany(mappedBy = "articulo_insumo")
-    private List<StockInsumoSucursal> stockInsumoSucursales;
+    private List<StockInsumoSucursal> stock_insumo_sucursales;
 }
