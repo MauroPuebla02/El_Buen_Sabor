@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServiceImpl>{
     public UsuarioController(UsuarioServiceImpl service) {
         this.service = service;

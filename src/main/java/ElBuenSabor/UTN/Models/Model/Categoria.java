@@ -24,4 +24,7 @@ public class Categoria extends EntityBean{
 
     @OneToMany(mappedBy = "categoria_padre", cascade = CascadeType.ALL)
     private List<Categoria> categorias_hijas = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "categorias")
+    private List<Articulo> articulos;
 }
