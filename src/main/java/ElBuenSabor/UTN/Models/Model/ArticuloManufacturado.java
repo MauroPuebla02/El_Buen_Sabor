@@ -1,4 +1,5 @@
 package ElBuenSabor.UTN.Models.Model;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -21,6 +22,7 @@ public class ArticuloManufacturado extends Articulo {
     private Integer tiempo_estimado_en_minutos;
 
     @OneToMany(mappedBy = "articulo_manufacturado",cascade = CascadeType.ALL)
+    @JsonManagedReference("detalle-articulo")
     private List<ArticuloManufacturadoDetalle> detalles;
 
 }
