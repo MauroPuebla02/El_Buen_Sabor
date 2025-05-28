@@ -22,6 +22,6 @@ public class Categoria extends EntityBean{
     @JoinColumn(name = "categoria_padre_id")
     private Categoria categoria_padre;
 
-    @OneToMany(mappedBy = "categoriaPadre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "categoria_padre", cascade = CascadeType.ALL)
     private List<Categoria> categorias_hijas = new ArrayList<>();
 }

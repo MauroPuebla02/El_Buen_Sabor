@@ -1,4 +1,5 @@
 package ElBuenSabor.UTN.Models.Model;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class ArticuloManufacturado extends Articulo {
     private String descripcion,preparacion;
     private Integer tiempo_estimado_en_minutos;
 
-    @OneToMany(mappedBy = "articuloManufacturado")
+    @OneToMany(mappedBy = "articulo_manufacturado",cascade = CascadeType.ALL)
     private List<ArticuloManufacturadoDetalle> detalles;
 
 }
