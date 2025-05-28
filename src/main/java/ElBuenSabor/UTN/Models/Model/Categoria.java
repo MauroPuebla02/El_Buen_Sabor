@@ -20,14 +20,11 @@ import java.util.List;
 public class Categoria extends EntityBean{
     private String denominacion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "categoria_padre_id")
     private Categoria categoria_padre;
 
-    @OneToMany(mappedBy = "categoria_padre", cascade = CascadeType.ALL)
-    private List<Categoria> categorias_hijas = new ArrayList<>();
-
     @ManyToMany(mappedBy = "categorias")
-    @JsonBackReference
+    @JsonBackReference("categoria-articulo")
     private List<Articulo> articulos;
 }

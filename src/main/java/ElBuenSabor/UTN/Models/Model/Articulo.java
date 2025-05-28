@@ -35,6 +35,6 @@ public abstract class Articulo extends EntityBean{
             joinColumns = @JoinColumn(name = "articulo_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
-    @JsonManagedReference        // ← este lado se “serializa”
+    @JsonManagedReference("categoria-articulo")
     private List<Categoria> categorias;
 }
