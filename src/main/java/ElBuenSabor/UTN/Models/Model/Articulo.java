@@ -1,5 +1,6 @@
 package ElBuenSabor.UTN.Models.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,5 +35,6 @@ public abstract class Articulo extends EntityBean{
             joinColumns = @JoinColumn(name = "articulo_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
+    @JsonManagedReference        // ← este lado se “serializa”
     private List<Categoria> categorias;
 }
