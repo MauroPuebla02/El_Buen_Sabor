@@ -1,4 +1,6 @@
 package ElBuenSabor.UTN.Models.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,5 +28,6 @@ public class Categoria extends EntityBean{
     private List<Categoria> categorias_hijas = new ArrayList<>();
 
     @ManyToMany(mappedBy = "categorias")
+    @JsonBackReference
     private List<Articulo> articulos;
 }
