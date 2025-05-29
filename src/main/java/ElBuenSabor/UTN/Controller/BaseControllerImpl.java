@@ -13,7 +13,13 @@ import java.util.List;
 
 public abstract class BaseControllerImpl<E extends EntityBean, S extends BaseServiceImpl<E,Long>> implements BaseController<E, Long> {
 
-    protected S service;
+    protected final S service;
+
+
+    public BaseControllerImpl(S service) {
+        this.service = service;
+    }
+
 
     @GetMapping("")
     public ResponseEntity<List<E>> getAll()  {
