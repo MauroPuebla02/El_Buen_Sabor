@@ -1,4 +1,6 @@
 package ElBuenSabor.UTN.Models.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,13 +20,11 @@ import java.util.List;
 public class Categoria extends EntityBean{
     private String denominacion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "categoria_padre_id")
     private Categoria categoria_padre;
 
-    @OneToMany(mappedBy = "categoriaPadre", cascade = CascadeType.ALL)
-    private List<Categoria> categorias_hijas = new ArrayList<>();
-
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "categorias")
+    @JsonBackReference("categoria-articulo")
     private List<Articulo> articulos;
 }
