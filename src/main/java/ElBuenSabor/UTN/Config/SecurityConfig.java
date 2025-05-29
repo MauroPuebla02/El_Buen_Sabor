@@ -38,6 +38,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                // Habilita CORS (usa el CorsConfigurationSource bean más abajo)
+                .cors(Customizer.withDefaults())
+
                 // deshabilita CSRF para no necesitar token en cada petición
                 .csrf(csrf -> csrf.disable())
 
@@ -46,14 +49,12 @@ public class SecurityConfig {
 
                 // reglas de acceso
                 .authorizeHttpRequests(auth -> auth
-                        // deja libres consola H2 y swagger
                         .requestMatchers(
                                 "/h2-console/**",
                                 "/swagger-ui.html",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
                         ).permitAll()
-                        // el resto requiere autenticación
                         .anyRequest().authenticated()
                 )
 
@@ -65,6 +66,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 
 }
 
