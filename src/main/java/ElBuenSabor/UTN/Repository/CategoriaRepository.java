@@ -1,5 +1,6 @@
 package ElBuenSabor.UTN.Repository;
 
+import ElBuenSabor.UTN.Models.DTO.CategoriaByManufactoradoDTO;
 import ElBuenSabor.UTN.Models.Model.Categoria;
 import org.springframework.data.jpa.repository.Query;
 
@@ -16,5 +17,5 @@ public interface CategoriaRepository extends BaseRepository<Categoria, Long>{
             JOIN ARTICULO AS A
             ON A.ID = AM.ID WHERE A.ELIMINADO != TRUE AND C.ELIMINADO != TRUE GROUP BY C.ID
 """, nativeQuery = true)
-    List<Categoria> findByManufacturado();
+    List<CategoriaByManufactoradoDTO> findByManufacturado();
 }

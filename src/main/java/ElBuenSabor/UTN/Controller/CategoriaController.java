@@ -1,5 +1,6 @@
 package ElBuenSabor.UTN.Controller;
 
+import ElBuenSabor.UTN.Models.DTO.CategoriaByManufactoradoDTO;
 import ElBuenSabor.UTN.Models.Model.Categoria;
 import ElBuenSabor.UTN.Service.Implements.CategoriaServiceImpl;
 import lombok.Value;
@@ -15,12 +16,10 @@ public class CategoriaController extends BaseControllerImpl<Categoria, Categoria
     public CategoriaController(CategoriaServiceImpl service) {
         super(service);
     }
-/*
-@GetMapping(value="/manufacturados")
-    public List<Categoria> getcategoriasManufacturados{
+
+    @GetMapping(value="/manufacturados")
+    public List<CategoriaByManufactoradoDTO> getcategoriasManufacturados(){
         return service.getCategoriasManufacturados();
     }
-*/
-
 
 }

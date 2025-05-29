@@ -1,5 +1,6 @@
 package ElBuenSabor.UTN.Service.Implements;
 
+import ElBuenSabor.UTN.Models.DTO.CategoriaByManufactoradoDTO;
 import ElBuenSabor.UTN.Models.Model.Categoria;
 import ElBuenSabor.UTN.Repository.BaseRepository;
 import ElBuenSabor.UTN.Repository.CategoriaRepository;
@@ -18,7 +19,7 @@ public class CategoriaServiceImpl extends BaseServiceImpl<Categoria, Long>  impl
     public CategoriaServiceImpl(BaseRepository <Categoria,Long>baseRepository) {super(baseRepository); }
 
     @Override
-    public List<Categoria> getCategoriasManufacturados() {
+    public List<CategoriaByManufactoradoDTO> getCategoriasManufacturados() {
 
         return repository.findByManufacturado();
     }
