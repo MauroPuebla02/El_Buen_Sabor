@@ -17,7 +17,7 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
     private ArticuloManufacturadoRepository repository;
     public ArticuloManufacturadoServiceImpl(BaseRepository<ArticuloManufacturado,Long> baseRepository) {super(baseRepository); }
 
-    @Override
+
     public List<ArticuloManufacturadoByCategoriaDTO> findArticulosManufacturadosByCategoria(Long idCategoria) {
         return repository.findArticulosManufacturadosByCategoria(idCategoria);
     }

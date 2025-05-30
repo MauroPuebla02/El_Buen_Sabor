@@ -18,9 +18,8 @@ public class CategoriaServiceImpl extends BaseServiceImpl<Categoria, Long>  impl
 
     public CategoriaServiceImpl(BaseRepository <Categoria,Long>baseRepository) {super(baseRepository); }
 
-    @Override
-    public List<CategoriaByManufactoradoDTO> getCategoriasManufacturados() {
 
-        return repository.findByManufacturado();
+    public List<Categoria> findByCategoriaPadreIsNull() {
+        return repository.findByCategoriaPadreIsNull();
     }
 }
