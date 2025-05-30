@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -29,12 +30,10 @@ public abstract class Articulo extends EntityBean{
     @JoinColumn(name = "unidad_de_medida_id")
     private UnidadDeMedida unidad_de_medida;
 
-    @ManyToMany
-    @JoinTable(
-            name = "categoria_articulo",
-            joinColumns = @JoinColumn(name = "articulo_id"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id")
-    )
-    @JsonManagedReference("categoria-articulo")
-    private List<Categoria> categorias;
+    /*
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+     */
 }
