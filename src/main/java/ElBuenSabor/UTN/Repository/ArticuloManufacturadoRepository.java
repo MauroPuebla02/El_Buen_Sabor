@@ -20,7 +20,7 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
                   AM.TIEMPO_ESTIMADO_EN_MINUTOS
            FROM CATEGORIA AS C
            JOIN ARTICULO AS A
-           ON A.CATEGORIA_ID = C.ID\s
+           ON A.CATEGORIA_ID = C.ID
            JOIN ARTICULO_MANUFACTURADO AS AM
            ON AM.ID = A.ID
            WHERE C.ID=?1 AND C.ELIMINADO = FALSE AND A.ELIMINADO = FALSE
