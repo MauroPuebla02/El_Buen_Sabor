@@ -1,9 +1,6 @@
 package ElBuenSabor.UTN.Models.Model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -17,6 +14,7 @@ import java.io.Serializable;
 public abstract class EntityBean implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "id", insertable = false, updatable = false)
     Long id;
-    boolean eliminado;
+    boolean eliminado = false;
 }

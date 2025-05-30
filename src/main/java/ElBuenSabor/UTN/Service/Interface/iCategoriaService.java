@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface iCategoriaService extends BaseService<Categoria, Long> {
 
-    List<CategoriaByManufactoradoDTO> getCategoriasManufacturados();
+
+
+    List<Categoria> findByCategoriaPadreIsNull();
 }
