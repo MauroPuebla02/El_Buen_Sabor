@@ -30,10 +30,9 @@ public abstract class Articulo extends EntityBean{
     @JoinColumn(name = "unidad_de_medida_id")
     private UnidadDeMedida unidad_de_medida;
 
-    /*
+
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-     */
 }
