@@ -1,5 +1,7 @@
 package ElBuenSabor.UTN.Models.Model;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,5 +15,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Entity
 public class Imagen extends EntityBean{
-    private String src, alt;
+
+    @Lob
+    @Column(name = "src", columnDefinition = "CLOB")
+    private String src;
+
+    private String alt;
 }

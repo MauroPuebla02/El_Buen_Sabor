@@ -3,6 +3,8 @@ package ElBuenSabor.UTN.Models.Model;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.io.Serializable;
 @MappedSuperclass
@@ -11,6 +13,8 @@ import java.io.Serializable;
 @Getter
 @Setter
 @SuperBuilder
+@SQLDelete(sql = "UPDATE ${TABLE_NAME} SET eliminado = true WHERE id = ?")
+@Where(clause = "eliminado = false")
 public abstract class EntityBean implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

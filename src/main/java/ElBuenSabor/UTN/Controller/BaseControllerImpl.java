@@ -30,7 +30,7 @@ public abstract class BaseControllerImpl<E extends EntityBean, S extends BaseSer
     public ResponseEntity<?> getById(@PathVariable Long id){
         return ResponseEntity.ok(service.findById(id));
     }
-    @PostMapping("/{idCategoria}")
+    @PostMapping("")
     public ResponseEntity<?> save(@RequestBody E entity){
         return ResponseEntity.ok(service.save(entity));
     }
