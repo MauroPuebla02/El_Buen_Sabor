@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +24,13 @@ public abstract class Articulo extends EntityBean{
     protected String denominacion;
     protected double precio_venta;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JoinColumn(name = "imagen_id")
     protected Imagen imagen;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "unidad_de_medida_id")
     private UnidadDeMedida unidad_de_medida;
-
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")

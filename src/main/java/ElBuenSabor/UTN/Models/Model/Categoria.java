@@ -24,8 +24,6 @@ public class Categoria extends EntityBean{
     @Builder.Default
     private List<Categoria> categorias_hijas = new ArrayList<>();
 
-
-
     @ManyToOne
     @JoinColumn(name = "tipo_categoria_id")
     private TipoCategoria tipo_categoria;
