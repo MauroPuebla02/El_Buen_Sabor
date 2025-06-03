@@ -42,6 +42,9 @@ dependencies {
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	// Procesador de anotaciones de MapStruct
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+	// Jackson Hibernate Module
+	implementation "com.fasterxml.jackson.datatype:jackson-datatype-hibernate6:2.15.2"
+
 }
 
 tasks.named('test') {

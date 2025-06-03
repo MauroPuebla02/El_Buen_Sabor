@@ -13,8 +13,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @SuperBuilder
-@SQLDelete(sql = "UPDATE ${TABLE_NAME} SET eliminado = true WHERE id = ?")
-@Where(clause = "eliminado = false")
 public abstract class EntityBean implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
