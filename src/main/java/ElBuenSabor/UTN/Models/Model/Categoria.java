@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,9 @@ import java.util.List;
 @Setter
 @SuperBuilder
 @Entity
+@Table(name = "categoria")
+@SQLDelete(sql = "UPDATE categoria SET eliminado = true WHERE id = ?")
+@Where(clause = "eliminado = false")
 public class Categoria extends EntityBean{
     private String denominacion;
 

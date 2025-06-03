@@ -20,15 +20,18 @@ import java.util.List;
 @SuperBuilder
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "articulo")
+@SQLDelete(sql = "UPDATE articulo SET eliminado = true WHERE id = ?")
+@Where(clause = "eliminado = false")
 public abstract class Articulo extends EntityBean{
     protected String denominacion;
     protected double precio_venta;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },orphanRemoval = true)
     @JoinColumn(name = "imagen_id")
     protected Imagen imagen;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unidad_de_medida_id")
     private UnidadDeMedida unidad_de_medida;
 
