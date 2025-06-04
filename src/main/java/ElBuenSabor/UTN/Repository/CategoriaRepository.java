@@ -1,8 +1,9 @@
 package ElBuenSabor.UTN.Repository;
 
-import ElBuenSabor.UTN.Models.DTO.CategoriaByManufactoradoDTO;
 import ElBuenSabor.UTN.Models.Model.Categoria;
+import ElBuenSabor.UTN.Models.Model.TipoCategoria;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -21,4 +22,11 @@ public interface CategoriaRepository extends BaseRepository<Categoria, Long>{
       """)
     List<Categoria> findByCategoriaPadreIsNull();
 
+    @Query(value=
+            """
+        SELECT * FROM Categoria 
+            WHERE ELIMINADO=FALSE AND Tipo_categoria_id =?1
+    """, nativeQuery = true
+    )
+    List<Categoria> findByTipoCategoria(@Param("idTipoCategoria") Long idTipoCategoria );
 }

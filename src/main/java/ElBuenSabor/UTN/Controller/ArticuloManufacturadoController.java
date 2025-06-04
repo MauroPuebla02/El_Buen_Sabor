@@ -19,7 +19,7 @@ public class ArticuloManufacturadoController extends BaseControllerImpl<Articulo
     }
 
     @GetMapping(value="/byCategoria/{idCategoria}")
-    public List<ArticuloManufacturadoByCategoriaDTO> getArticulosManufacturadoPorCategoria(@PathVariable("idCategoria") Long idCategoria){
+    public List<ArticuloManufacturado> getArticulosManufacturadoPorCategoria(@PathVariable("idCategoria") Long idCategoria){
         return service.findArticulosManufacturadosByCategoria(idCategoria);
     }
 }

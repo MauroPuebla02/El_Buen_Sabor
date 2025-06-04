@@ -31,7 +31,7 @@ public abstract class Articulo extends EntityBean{
     @JoinColumn(name = "imagen_id")
     protected Imagen imagen;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "unidad_de_medida_id")
     private UnidadDeMedida unidad_de_medida;
 

@@ -18,7 +18,7 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
     public ArticuloManufacturadoServiceImpl(BaseRepository<ArticuloManufacturado,Long> baseRepository) {super(baseRepository); }
 
 
-    public List<ArticuloManufacturadoByCategoriaDTO> findArticulosManufacturadosByCategoria(Long idCategoria) {
+    public List<ArticuloManufacturado> findArticulosManufacturadosByCategoria(Long idCategoria) {
         return repository.findArticulosManufacturadosByCategoria(idCategoria);
     }
 }

@@ -4,10 +4,7 @@ import ElBuenSabor.UTN.Models.DTO.CategoriaByManufactoradoDTO;
 import ElBuenSabor.UTN.Models.Model.Categoria;
 import ElBuenSabor.UTN.Service.Implements.CategoriaServiceImpl;
 import lombok.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,10 +15,14 @@ public class CategoriaController extends BaseControllerImpl<Categoria, Categoria
         super(service);
     }
 
-    @GetMapping(value="/manufacturados")
+    @GetMapping(value="/manufacturadosPadre")
     public List<Categoria> findByCategoriaPadreIsNull(){
         return service.findByCategoriaPadreIsNull();
     }
 
+    @GetMapping(value="/manufacturados/{idTipoCategoria}")
+    public List<Categoria> findByTipoCategoria(@PathVariable("idTipoCategoria") Long idTipoCategoria){
+        return service.findByTipoCategoria(idTipoCategoria);
+    }
 
 }
