@@ -11,4 +11,6 @@ public interface iCategoriaService extends BaseService<Categoria, Long> {
 
 
     List<Categoria> findByCategoriaPadreIsNull();
+
+    List<Categoria> findByTipoCategoria(Long idTipoCategoria);
 }

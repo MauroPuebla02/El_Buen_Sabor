@@ -10,6 +10,18 @@ import java.util.List;
 
 @Repository
 public interface ArticuloManufacturadoRepository extends BaseRepository<ArticuloManufacturado, Long> {
+    @Query("""
+        SELECT DISTINCT am
+          FROM ArticuloManufacturado am
+          LEFT JOIN FETCH am.unidad_de_medida udm
+          LEFT JOIN FETCH am.imagen img
+          LEFT JOIN FETCH am.detalles d
+          LEFT JOIN FETCH d.articulo_insumo ai
+         WHERE am.categoria.id = :idCategoria
+           AND am.eliminado = false
+        """)
+    List<ArticuloManufacturado> findArticulosManufacturadosByCategoria(@Param("idCategoria") Long idCategoria);
+
 
     @Query(value = """
 
@@ -17,15 +29,13 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
                        A.DENOMINACION,
                        AM.DESCRIPCION,
                        A.PRECIO_VENTA,
-                       AM.TIEMPO_ESTIMADO_EN_MINUTOS
+                       AM.TIEMPO_ESTIMADO_EN_MINUTOS,
                 FROM ARTICULO AS A
                 JOIN ARTICULO_MANUFACTURADO AS AM ON AM.ID = A.ID
                 WHERE A.CATEGORIA_ID = ?1
                   AND A.ELIMINADO = FALSE
         """,
             nativeQuery = true)
-    List<ArticuloManufacturadoByCategoriaDTO> findArticulosManufacturadosByCategoria(
+    List<ArticuloManufacturadoByCategoriaDTO> findArticulosManufacturadosByCategoria2(
             @Param("idCategoria") Long idCategoria);
-
-
 }

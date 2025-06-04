@@ -22,7 +22,7 @@ import java.util.List;
 @Where(clause = "eliminado = false")
 public class ArticuloManufacturado extends Articulo {
     @Column(name = "eliminado")
-    boolean eliminadoo = false;
+    boolean delete = false;
     private String descripcion,preparacion;
     private Integer tiempo_estimado_en_minutos;
 

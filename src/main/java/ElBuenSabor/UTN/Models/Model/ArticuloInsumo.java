@@ -24,7 +24,7 @@ import java.util.List;
 @Where(clause = "eliminado = false")
 public class ArticuloInsumo extends Articulo {
     @Column(name = "eliminado")
-    boolean eliminadoo = false;
+    boolean delete = false;
 
     private boolean es_para_elaborar;
 

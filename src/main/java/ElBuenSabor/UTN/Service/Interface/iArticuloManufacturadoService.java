@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface iArticuloManufacturadoService extends BaseService<ArticuloManufacturado, Long> {
 
-    List<ArticuloManufacturadoByCategoriaDTO> findArticulosManufacturadosByCategoria(Long idCategoria);
+    List<ArticuloManufacturado> findArticulosManufacturadosByCategoria(Long idCategoria);
+
 }
