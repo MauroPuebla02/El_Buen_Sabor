@@ -21,7 +21,7 @@ public class CategoriaController extends BaseControllerImpl<Categoria, Categoria
     }
 
     @GetMapping(value="/manufacturados/{idTipoCategoria}")
-    public List<Categoria> findByTipoCategoria(@PathVariable("idTipoCategoria") Long idTipoCategoria){
+    public List<Categoria> findByTipoCategoria(@PathVariable Long idTipoCategoria){
         return service.findByTipoCategoria(idTipoCategoria);
     }
 

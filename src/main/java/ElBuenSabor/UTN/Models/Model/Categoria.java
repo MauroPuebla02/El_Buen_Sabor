@@ -23,11 +23,11 @@ import java.util.List;
 public class Categoria extends EntityBean{
     private String denominacion;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "categoria_id")
     @Builder.Default
     private List<Categoria> categorias_hijas = new ArrayList<>();
+
 
     @ManyToOne
     @JoinColumn(name = "tipo_categoria_id")
