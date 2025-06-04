@@ -18,7 +18,7 @@ import java.util.List;
 @Entity
 public class Pedido extends EntityBean{
     private LocalTime hora_estimada_finalizacion;
-    private double total, total_costo;
+    private double total;
     private Estado estado_pedido;
     private TipoEnvio tipo_envio;
     private FormaPago forma_pago;
