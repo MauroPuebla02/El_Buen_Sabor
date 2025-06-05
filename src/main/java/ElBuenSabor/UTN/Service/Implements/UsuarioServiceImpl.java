@@ -8,6 +8,8 @@ import ElBuenSabor.UTN.Service.Interface.iUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implements iUsuarioService {
 
@@ -16,4 +18,5 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
     public UsuarioServiceImpl(BaseRepository<Usuario, Long> baseRepository) {
         super(baseRepository);
     }
+
 }
