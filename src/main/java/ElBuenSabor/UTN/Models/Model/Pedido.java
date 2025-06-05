@@ -36,10 +36,6 @@ public class Pedido extends EntityBean{
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    @OneToOne
-    @JoinColumn(name = "factura_id")
-    private Factura factura;
-
     @OneToMany(mappedBy = "pedido")
     private List<PedidoDetalle> detalles;
 }

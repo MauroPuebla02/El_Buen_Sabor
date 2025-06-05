@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorDTO> handleAll(Exception ex) {
         ErrorDTO error = new ErrorDTO(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Ocurrió un error inesperado"
+                "Ocurrió un error inesperado :"+ ex.getMessage()
         );
         // opcional: loguear ex.getMessage() o stacktrace
         return ResponseEntity

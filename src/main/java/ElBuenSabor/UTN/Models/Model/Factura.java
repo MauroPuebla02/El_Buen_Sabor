@@ -1,5 +1,6 @@
 package ElBuenSabor.UTN.Models.Model;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class Factura extends EntityBean{
     private double total_venta;
     private FormaPago forma_pago;
 
-    @OneToOne(mappedBy = "factura")
+    @OneToOne
+    @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 }
