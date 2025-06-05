@@ -7,9 +7,8 @@ import jakarta.transaction.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
 
-public abstract class BaseServiceImpl<E extends EntityBean, ID extends Serializable> implements BaseService<E, ID> {
+public abstract class BaseServiceImpl<E extends EntityBean, ID extends Serializable> implements iBaseService<E, ID> {
     protected BaseRepository<E, ID> repository;
 
     public BaseServiceImpl(BaseRepository<E, ID> repository) {
