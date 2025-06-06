@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface CategoriaRepository extends BaseRepository<Categoria, Long>{
 
-
     @Query("""
       SELECT DISTINCT c
         FROM Categoria c
