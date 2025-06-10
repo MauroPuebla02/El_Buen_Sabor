@@ -39,4 +39,8 @@ public abstract class Articulo extends EntityBean{
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
+    public Articulo(Long id) {
+        this.id = id;
+    }
+
 }
