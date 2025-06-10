@@ -42,4 +42,8 @@ public class Pedido extends EntityBean{
 
     @OneToMany(mappedBy = "pedido")
     private List<PedidoDetalle> detalles;
+
+    @ManyToOne
+    @JoinColumn(name = "repartidor_id")
+    private Usuario repartidor;
 }
