@@ -24,27 +24,40 @@ repositories {
 }
 
 dependencies {
+	// Spring Data JPA
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// OAuth2 Resource Server
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	// Spring Security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	// Spring Web (MVC)
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Lombok (solo en tiempo de compilación)
 	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Devtools (solo en desarrollo)
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Bases de datos en tiempo de ejecución
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'com.mysql:mysql-connector-j'
-	annotationProcessor 'org.projectlombok:lombok'
+
+	// MapStruct (para mapeo de DTOs)
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+	// Jackson Hibernate Module (para serializar entidades JPA)
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate6:2.15.2'
+
+	// SpringDoc OpenAPI UI (Swagger UI + endpoints /v3/api-docs, /swagger-ui.html)
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.8'
+
+	// Testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	// Springdoc OpenAPI UI (Swagger UI + Endpoints /openapi, /swagger-ui.html)
-	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0"
-	// MapStruct core
-	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
-	// Procesador de anotaciones de MapStruct
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
-	// Jackson Hibernate Module
-	implementation "com.fasterxml.jackson.datatype:jackson-datatype-hibernate6:2.15.2"
-
 }
 
 tasks.named('test') {
