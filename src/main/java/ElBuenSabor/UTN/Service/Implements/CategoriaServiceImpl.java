@@ -18,6 +18,9 @@ public class CategoriaServiceImpl extends BaseServiceImpl<Categoria, Long>  impl
 
     public CategoriaServiceImpl(BaseRepository <Categoria,Long>baseRepository) {super(baseRepository); }
 
+    public List<Categoria> findCategoriaParaVentas() {
+        return repository.findCategoriaParaVentas();
+    }
 
     public List<Categoria> findByCategoriaPadreIsNull() {
         return repository.findByCategoriaPadreIsNull();

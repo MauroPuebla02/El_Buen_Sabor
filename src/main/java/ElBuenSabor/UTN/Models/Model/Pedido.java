@@ -1,4 +1,6 @@
 package ElBuenSabor.UTN.Models.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,6 +42,9 @@ public class Pedido extends EntityBean{
     @JoinColumn(name = "factura_id")
     private Factura factura;
 
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonManagedReference("detalle-pedido")
     private List<PedidoDetalle> detalles;
 }
