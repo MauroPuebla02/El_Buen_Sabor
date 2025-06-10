@@ -13,6 +13,7 @@ import java.util.List;
 
 @Service
 public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloManufacturado, Long> implements iArticuloManufacturadoService {
+
     @Autowired
     private ArticuloManufacturadoRepository repository;
     public ArticuloManufacturadoServiceImpl(BaseRepository<ArticuloManufacturado,Long> baseRepository) {super(baseRepository); }
