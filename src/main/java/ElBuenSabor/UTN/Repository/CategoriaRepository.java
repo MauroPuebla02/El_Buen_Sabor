@@ -21,6 +21,20 @@ public interface CategoriaRepository extends BaseRepository<Categoria, Long>{
       """)
     List<Categoria> findByCategoriaPadreIsNull();
 
+    //Esta funcion trae todas las categorias de manufacturado y de insumos que no son para elaborar
+    @Query(value = """ 
+        SELECT * FROM Categoria
+        WHERE ELIMINADO=FALSE AND Tipo_categoria_id = 2
+        UNION ALL
+        SELECT C.* FROM CATEGORIA  AS C
+        LEFT JOIN ARTICULO AS A
+        ON A.CATEGORIA_ID = C.ID
+        LEFT JOIN ARTICULO_INSUMO AS AI
+        ON A.ID = AI.ID
+        WHERE AI.ES_PARA_ELABORAR = FALSE AND AI.ELIMINADO = FALSE AND A.ELIMINADO = FALSE AND C.ELIMINADO = FALSE
+    """, nativeQuery = true)
+    List<Categoria> findCategoriaParaVentas();
+
     @Query(value=
             """
         SELECT * FROM Categoria 

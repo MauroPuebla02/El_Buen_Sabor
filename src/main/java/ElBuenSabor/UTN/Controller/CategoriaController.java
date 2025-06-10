@@ -15,6 +15,11 @@ public class CategoriaController extends BaseControllerImpl<Categoria, Categoria
         super(service);
     }
 
+    @GetMapping(value="/ventas")
+    public List<Categoria> findCategoriaParaVentas(){
+        return service.findCategoriaParaVentas();
+    }
+
     @GetMapping(value="/manufacturadosPadre")
     public List<Categoria> findByCategoriaPadreIsNull(){
         return service.findByCategoriaPadreIsNull();

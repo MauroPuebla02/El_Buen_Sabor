@@ -20,6 +20,4 @@ public class ArticuloInsumoController extends BaseControllerImpl<ArticuloInsumo,
     public List<ArticuloInsumo> getArticulosInsumosPorCategoria(@PathVariable("idCategoria") Long idCategoria){
         return service.findArticulosInsumosByCategoria(idCategoria);
     }
-
-
 }
