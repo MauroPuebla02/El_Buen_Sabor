@@ -15,7 +15,6 @@ public abstract class BaseControllerImpl<E extends EntityBean, S extends BaseSer
 
     protected final S service;
 
-
     public BaseControllerImpl(S service) {
         this.service = service;
     }
