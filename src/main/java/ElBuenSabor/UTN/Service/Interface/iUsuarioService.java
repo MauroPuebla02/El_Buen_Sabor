@@ -1,8 +1,10 @@
 package ElBuenSabor.UTN.Service.Interface;
 
 import ElBuenSabor.UTN.Models.Model.Usuario;
-import ElBuenSabor.UTN.Service.BaseService;
+import ElBuenSabor.UTN.Service.iBaseService;
 
-public interface iUsuarioService extends BaseService<Usuario, Long> {
+import java.util.List;
+
+public interface iUsuarioService extends iBaseService<Usuario, Long> {
 
 }

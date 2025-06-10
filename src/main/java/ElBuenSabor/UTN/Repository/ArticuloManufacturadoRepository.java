@@ -36,6 +36,5 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
                   AND A.ELIMINADO = FALSE
         """,
             nativeQuery = true)
-    List<ArticuloManufacturadoByCategoriaDTO> findArticulosManufacturadosByCategoria2(
-            @Param("idCategoria") Long idCategoria);
+    List<ArticuloManufacturadoByCategoriaDTO> findArticulosManufacturadosByCategoria2(@Param("idCategoria") Long idCategoria);
 }
