@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface iCategoriaService extends iBaseService<Categoria, Long> {
 
+    List<Categoria>  findCategoriaParaVentas();
+
     List<Categoria> findByCategoriaPadreIsNull();
 
     List<Categoria> findByTipoCategoria(Long idTipoCategoria);

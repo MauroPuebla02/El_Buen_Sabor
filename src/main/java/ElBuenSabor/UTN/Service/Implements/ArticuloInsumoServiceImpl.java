@@ -16,10 +16,9 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo, L
     @Autowired
     private ArticuloInsumoRepository repository;
     public ArticuloInsumoServiceImpl(BaseRepository<ArticuloInsumo,Long> baseRepository) {super(baseRepository); }
-/*
+
     public List<ArticuloInsumo> findArticulosInsumosByCategoria(Long idCategoria){
         return repository.findArticulosInsumosByCategoria(idCategoria);
     }
 
- */
 }

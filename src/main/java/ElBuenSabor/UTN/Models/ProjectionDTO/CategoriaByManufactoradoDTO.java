@@ -1,4 +1,4 @@
-package ElBuenSabor.UTN.Models.DTO;
+package ElBuenSabor.UTN.Models.ProjectionDTO;
 
 public interface CategoriaByManufactoradoDTO {
     Long getId();

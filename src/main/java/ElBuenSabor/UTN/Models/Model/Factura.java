@@ -17,8 +17,8 @@ import java.time.LocalDate;
 @Entity
 public class Factura extends EntityBean{
     private LocalDate fecha_facturacion;
-    private Integer mp_payment_id,mp_merchant_order_id;
-    private String mp_preference_id,mp_payment_type;
+
+    private String mp_preference_id;
     private double total_venta;
     private FormaPago forma_pago;
 

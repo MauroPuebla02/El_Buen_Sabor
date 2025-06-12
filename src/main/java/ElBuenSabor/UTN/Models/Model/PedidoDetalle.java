@@ -1,4 +1,6 @@
 package ElBuenSabor.UTN.Models.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -20,6 +22,7 @@ public class PedidoDetalle extends EntityBean{
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
+    @JsonBackReference("detalle-pedido")
     private Pedido pedido;
 
     @ManyToOne
