@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("sucursales")
+@RequestMapping("/sucursales")
 public class SucursalController extends BaseControllerImpl<Sucursal, SucursalServiceImpl>{
     public SucursalController(SucursalServiceImpl service) {super(service);}
 }

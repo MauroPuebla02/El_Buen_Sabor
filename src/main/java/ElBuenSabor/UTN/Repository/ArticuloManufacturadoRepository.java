@@ -1,6 +1,6 @@
 package ElBuenSabor.UTN.Repository;
 
-import ElBuenSabor.UTN.Models.DTO.ArticuloManufacturadoByCategoriaDTO;
+import ElBuenSabor.UTN.Models.ProjectionDTO.ArticuloManufacturadoByCategoriaDTO;
 import ElBuenSabor.UTN.Models.Model.ArticuloManufacturado;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,9 +1,7 @@
 package ElBuenSabor.UTN.Controller;
 
-import ElBuenSabor.UTN.Models.DTO.CategoriaByManufactoradoDTO;
 import ElBuenSabor.UTN.Models.Model.Categoria;
 import ElBuenSabor.UTN.Service.Implements.CategoriaServiceImpl;
-import lombok.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +11,11 @@ import java.util.List;
 public class CategoriaController extends BaseControllerImpl<Categoria, CategoriaServiceImpl>{
     public CategoriaController(CategoriaServiceImpl service) {
         super(service);
+    }
+
+    @GetMapping(value="/ventas")
+    public List<Categoria> findCategoriaParaVentas(){
+        return service.findCategoriaParaVentas();
     }
 
     @GetMapping(value="/manufacturadosPadre")

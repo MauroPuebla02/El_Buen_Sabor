@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("tipo-promociones")
+@RequestMapping("/tipo_promociones")
 public class TipoPromocionController extends BaseControllerImpl<TipoPromocion, TipoPromocionServiceImpl>{
     public TipoPromocionController(TipoPromocionServiceImpl service) {super(service);}
 }

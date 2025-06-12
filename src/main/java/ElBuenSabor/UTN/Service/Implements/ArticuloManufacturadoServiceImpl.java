@@ -1,6 +1,5 @@
 package ElBuenSabor.UTN.Service.Implements;
 
-import ElBuenSabor.UTN.Models.DTO.ArticuloManufacturadoByCategoriaDTO;
 import ElBuenSabor.UTN.Models.Model.ArticuloManufacturado;
 import ElBuenSabor.UTN.Repository.ArticuloManufacturadoRepository;
 import ElBuenSabor.UTN.Repository.BaseRepository;
@@ -13,6 +12,7 @@ import java.util.List;
 
 @Service
 public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloManufacturado, Long> implements iArticuloManufacturadoService {
+
     @Autowired
     private ArticuloManufacturadoRepository repository;
     public ArticuloManufacturadoServiceImpl(BaseRepository<ArticuloManufacturado,Long> baseRepository) {super(baseRepository); }
