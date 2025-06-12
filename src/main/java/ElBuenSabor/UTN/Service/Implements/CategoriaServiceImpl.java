@@ -1,6 +1,5 @@
 package ElBuenSabor.UTN.Service.Implements;
 
-import ElBuenSabor.UTN.Models.DTO.CategoriaByManufactoradoDTO;
 import ElBuenSabor.UTN.Models.Model.Categoria;
 import ElBuenSabor.UTN.Repository.BaseRepository;
 import ElBuenSabor.UTN.Repository.CategoriaRepository;

@@ -8,9 +8,15 @@ import ElBuenSabor.UTN.Service.Interface.iPromocionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PromocionServiceImpl extends BaseServiceImpl<Promocion, Long> implements iPromocionService {
     @Autowired
     private PromocionRepository repository;
     public PromocionServiceImpl(BaseRepository<Promocion, Long> baseRepository) {super(baseRepository);}
+
+    public List<Promocion> getPromocionesPorTipoPromocion(Long idTipoPromocion) {
+        return repository.getPromocionesPorTipoPromocion(idTipoPromocion);
+    }
 }

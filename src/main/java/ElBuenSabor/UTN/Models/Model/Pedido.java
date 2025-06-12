@@ -23,6 +23,7 @@ public class Pedido extends EntityBean{
     private double total;
     private Estado estado_pedido;
     private TipoEnvio tipo_envio;
+    private double descuento;
     private FormaPago forma_pago;
     private LocalDate fecha_pedido;
 
