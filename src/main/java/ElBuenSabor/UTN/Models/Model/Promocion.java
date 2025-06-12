@@ -37,7 +37,7 @@ public class Promocion extends EntityBean{
     )
     private List<Articulo> articulos;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "imagen_id")
     private Imagen imagen;
 
