@@ -1,9 +1,7 @@
 package ElBuenSabor.UTN.Controller;
 
-import ElBuenSabor.UTN.Models.DTO.CategoriaByManufactoradoDTO;
 import ElBuenSabor.UTN.Models.Model.Categoria;
 import ElBuenSabor.UTN.Service.Implements.CategoriaServiceImpl;
-import lombok.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
