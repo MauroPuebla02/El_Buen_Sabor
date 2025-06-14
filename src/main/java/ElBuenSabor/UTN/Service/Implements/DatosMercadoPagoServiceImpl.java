@@ -1,6 +1,7 @@
 package ElBuenSabor.UTN.Service.Implements;
 
 import ElBuenSabor.UTN.Models.Model.DatosMercadoPago;
+import ElBuenSabor.UTN.Models.Model.Pedido;
 import ElBuenSabor.UTN.Repository.BaseRepository;
 import ElBuenSabor.UTN.Repository.DatosMercadoPagoRepository;
 import ElBuenSabor.UTN.Service.BaseServiceImpl;
@@ -16,27 +17,47 @@ import org.springframework.stereotype.Service;
 
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DatosMercadoPagoServiceImpl extends BaseServiceImpl<DatosMercadoPago,Long> implements iDatosMercadoPagoService {
 
     @Autowired
     private DatosMercadoPagoRepository pagoRepo;
+    @Autowired
+    private PedidoServiceImpl pedidoServiceImpl;
     public DatosMercadoPagoServiceImpl(BaseRepository<DatosMercadoPago,Long> baseRepository) {super(baseRepository);}
 
     private final PreferenceClient preferenceClient = new PreferenceClient();
 
     @Override
-    public String crearPreferencia(BigDecimal monto, String descripcion) {
+    public String crearPreferencia(Pedido pedido) {
         try {
-            // 1) Build de ítems
-            PreferenceItemRequest item = PreferenceItemRequest.builder()
-                    .title(descripcion)
-                    .quantity(1)
-                    .unitPrice(monto)
-                    .build();
+            pedido = pedidoServiceImpl.save(pedido);
+            List<PreferenceItemRequest> items = pedido.getDetalles().stream()
+                    .map(det -> {
+                        // 1) formateo el precio con 2 decimales
+                        BigDecimal precio = BigDecimal.valueOf(det.getArticulo().getPrecio_venta())
+                                .setScale(2, RoundingMode.HALF_UP);
+                        // 2) chequeo mínimo
+                        if (precio.compareTo(BigDecimal.valueOf(0.01)) < 0) {
+                            throw new IllegalArgumentException(
+                                    "Precio inválido para el ítem " + det.getArticulo().getDenominacion() + ": " + precio
+                            );
+                        }
+                        // 3) build del ítem incluyendo currency_id
+                        return PreferenceItemRequest.builder()
+                                .title("Pedido Buen Sabor")
+                                .quantity(det.getCantidad())
+                                .unitPrice(precio)
+                                .currencyId("ARS")              // <- obligatorio
+                                .build();
+                    })
+                    .collect(Collectors.toList());
+
 
             // 2) Build de BackUrls
           /*  PreferenceBackUrlsRequest backUrls = PreferenceBackUrlsRequest.builder()
@@ -47,7 +68,7 @@ public class DatosMercadoPagoServiceImpl extends BaseServiceImpl<DatosMercadoPag
         */
             // 3) Build de la PreferenceRequest
             PreferenceRequest request = PreferenceRequest.builder()
-                    .items(List.of(item))
+                    .items(items)
                     //.backUrls(backUrls)
                     //.autoReturn("all")
                     .build();

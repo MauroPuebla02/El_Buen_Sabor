@@ -11,7 +11,7 @@ public interface PromocionRepository extends BaseRepository<Promocion,Long> {
 
     @Query(value="""
         SELECT * FROM PROMOCION AS P
-        WHERE P.TIPO_PROMOCION_ID = ?1
+        WHERE P.TIPO_PROMOCION_ID = ?1 AND ELIMINADO = FALSE
         """, nativeQuery=true)
     List<Promocion> getPromocionesPorTipoPromocion(@Param("idTipoPromocion") Long idTipoPromocion);
 
