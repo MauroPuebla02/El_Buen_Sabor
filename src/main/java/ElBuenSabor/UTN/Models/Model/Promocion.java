@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,6 +18,8 @@ import java.util.List;
 @Setter
 @SuperBuilder
 @Entity
+@SQLDelete(sql    = "UPDATE promocion SET eliminado = true WHERE id = ?")
+@Where(clause  = "eliminado = false")
 public class Promocion extends EntityBean{
     private String denominacion,descripcion_descuento;
     private LocalDate fecha_desde,fecha_hasta;
@@ -29,7 +33,7 @@ public class Promocion extends EntityBean{
     @ManyToMany(mappedBy = "promociones")
     private List<Sucursal> sucursales;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "promocion_articulo",
             joinColumns = @JoinColumn(name = "promocion_id"),

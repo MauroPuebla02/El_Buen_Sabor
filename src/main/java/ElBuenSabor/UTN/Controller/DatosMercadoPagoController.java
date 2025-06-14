@@ -1,6 +1,7 @@
 package ElBuenSabor.UTN.Controller;
 
 import ElBuenSabor.UTN.Models.Model.DatosMercadoPago;
+import ElBuenSabor.UTN.Models.Model.Pedido;
 import ElBuenSabor.UTN.Service.Implements.DatosMercadoPagoServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +15,8 @@ public class DatosMercadoPagoController extends BaseControllerImpl<DatosMercadoP
     public DatosMercadoPagoController(DatosMercadoPagoServiceImpl service) {super(service);}
 
     @PostMapping("/preference")
-    public ResponseEntity<Map<String, String>> crearPreference(@RequestBody Map<String, Object> body)  {
-        BigDecimal monto = new BigDecimal(body.get("monto").toString());
-        String descripcion = body.get("descripcion").toString();
-        String checkoutUrl = service.crearPreferencia(monto, descripcion);
+    public ResponseEntity<Map<String, String>> crearPreference(@RequestBody Pedido pedido)  {
+        String checkoutUrl = service.crearPreferencia(pedido);
         return ResponseEntity.ok(Map.of("url", checkoutUrl));
     }
 
