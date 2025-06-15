@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.math.BigDecimal;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -16,7 +18,7 @@ import lombok.experimental.SuperBuilder;
 @Entity
 public class StockInsumoSucursal extends EntityBean{
 
-    private double precio_compra;
+    private BigDecimal precio_compra;
     private Integer stock_actual,stock_minimo,stock_maximo;
 
     @ManyToOne

@@ -18,6 +18,7 @@ import java.util.List;
 public class Usuario extends EntityBean{
     private String nombre,apellido,telefono,email;
     private LocalDate fecha_nacimiento;
+    @Enumerated(EnumType.STRING)
     private Rol rol;
 
     @ManyToMany
