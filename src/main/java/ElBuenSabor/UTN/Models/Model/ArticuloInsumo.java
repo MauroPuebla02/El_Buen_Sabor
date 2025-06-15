@@ -1,8 +1,6 @@
 package ElBuenSabor.UTN.Models.Model;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +26,12 @@ public class ArticuloInsumo extends Articulo {
 
     private boolean es_para_elaborar;
 
-    @OneToMany(mappedBy = "articulo_insumo")
+    @OneToMany(
+            mappedBy = "articulo_insumo",
+            cascade   = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
+    @JsonManagedReference
     private List<StockInsumoSucursal> stock_insumo_sucursales;
 }

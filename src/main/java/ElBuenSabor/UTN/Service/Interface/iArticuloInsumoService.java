@@ -8,4 +8,6 @@ import java.util.List;
 public interface iArticuloInsumoService extends iBaseService<ArticuloInsumo, Long> {
 
     List<ArticuloInsumo> findArticulosInsumosByCategoria(Long idCategoria);
+
+    void actualizarStock (Long insumoId, Long sucursalId, int nuevoStock);
 }

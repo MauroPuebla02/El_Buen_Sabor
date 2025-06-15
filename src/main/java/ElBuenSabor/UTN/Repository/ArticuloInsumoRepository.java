@@ -1,6 +1,8 @@
 package ElBuenSabor.UTN.Repository;
 
 import ElBuenSabor.UTN.Models.Model.ArticuloInsumo;
+import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -19,6 +21,12 @@ public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,
            AND ai.eliminado = false
         """)
     List<ArticuloInsumo> findArticulosInsumosByCategoria(@Param("idCategoria") Long idCategoria);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE StockInsumoSucursal s SET s.stock_actual = :nuevoStock " +
+            "WHERE s.articulo_insumo.id = :insumoId AND s.sucursal.id = :sucursalId AND s.eliminado = false")
+    void actualizarStock(Long insumoId, Long sucursalId, int nuevoStock);
 
 
 }

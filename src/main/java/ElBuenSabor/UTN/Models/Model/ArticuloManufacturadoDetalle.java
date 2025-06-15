@@ -22,7 +22,7 @@ import org.hibernate.annotations.Where;
 @SQLDelete(sql = "UPDATE articulo_manufacturado_detalle SET eliminado = true WHERE id = ?")
 @Where(clause = "eliminado = false")
 public class ArticuloManufacturadoDetalle extends EntityBean{
-    private Integer cantidad;
+    private double cantidad;
 
     @ManyToOne
     @JoinColumn(name = "articulo_manufacturado_id")
