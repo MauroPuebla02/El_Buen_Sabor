@@ -16,5 +16,6 @@ public abstract class EntityBean implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column(name = "id", insertable = false, updatable = false)
     Long id;
+   // @Builder.Default
     boolean eliminado = false;
 }

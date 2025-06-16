@@ -1,4 +1,5 @@
 package ElBuenSabor.UTN.Models.Model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +8,9 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +21,9 @@ import java.util.List;
 public class Usuario extends EntityBean{
     private String nombre,apellido,telefono,email;
     private LocalDate fecha_nacimiento;
-    private Rol rol;
+    @Column(name = "auth0_id")
+    private String auth0Id;
+
 
     @ManyToMany
     @JoinTable(
@@ -27,6 +32,15 @@ public class Usuario extends EntityBean{
             inverseJoinColumns = @JoinColumn(name = "domicilio_id")
     )
     private List<Domicilio> domicilios;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("usuarios")
+    @JoinTable(
+            name = "usuario_roles",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id")
+    )
+    private Set<Roles> roles = new HashSet<>();
 
     @ManyToMany(mappedBy = "usuarios")
     private List<Sucursal> sucursales;
