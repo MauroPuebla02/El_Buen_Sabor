@@ -73,3 +73,5 @@ src/main/resources/static/v3/api-docs/**
 # Test coverage
 /coverage/
 /*.exec
+
+/data/
