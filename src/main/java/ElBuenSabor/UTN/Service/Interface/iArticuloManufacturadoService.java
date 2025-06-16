@@ -9,4 +9,5 @@ public interface iArticuloManufacturadoService extends iBaseService<ArticuloManu
 
     List<ArticuloManufacturado> findArticulosManufacturadosByCategoria(Long idCategoria);
 
+    ArticuloManufacturado getArticuloManufacturadoPorId(Long id);
 }

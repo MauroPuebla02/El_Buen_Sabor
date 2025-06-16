@@ -36,7 +36,8 @@ public interface CategoriaRepository extends BaseRepository<Categoria, Long>{
     List<Categoria> findCategoriaParaVentas();
 
     @Query(value=
-            """
+            """     
+        
         SELECT * FROM Categoria 
             WHERE ELIMINADO=FALSE AND Tipo_categoria_id =?1
     """, nativeQuery = true

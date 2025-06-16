@@ -22,7 +22,6 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
         """)
     List<ArticuloManufacturado> findArticulosManufacturadosByCategoria(@Param("idCategoria") Long idCategoria);
 
-
     @Query(value = """
 
             SELECT A.ID,
@@ -37,4 +36,16 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
         """,
             nativeQuery = true)
     List<ArticuloManufacturadoByCategoriaDTO> findArticulosManufacturadosByCategoria2(@Param("idCategoria") Long idCategoria);
+    @Query("""
+        SELECT DISTINCT am
+        FROM ArticuloManufacturado am
+        LEFT JOIN FETCH am.unidad_de_medida udm
+        LEFT JOIN FETCH am.imagen img
+        LEFT JOIN FETCH am.detalles d
+        LEFT JOIN FETCH d.articulo_insumo ai
+        WHERE am.id = :id
+          AND am.eliminado = false
+    """)
+    ArticuloManufacturado getArticuloManufacturadoPorId(@Param("id") Long id);
+
 }

@@ -21,4 +21,8 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo, L
         return repository.findArticulosInsumosByCategoria(idCategoria);
     }
 
+    public void actualizarStock(Long insumoId, Long sucursalId, int nuevoStock) {
+        repository.actualizarStock(insumoId, sucursalId, nuevoStock);
+    }
+
 }
