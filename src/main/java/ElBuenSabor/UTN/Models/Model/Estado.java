@@ -1,9 +1,13 @@
 package ElBuenSabor.UTN.Models.Model;
 
 public enum Estado {
-    PREPARACION,
-    PENDIENTE,
-    CANCELADO,
-    RECHAZADO,
+    PENDIENTE ,
+    CONFIRMADO,
+    EN_PREPARACION ,
+    DEMORADO ,
+    LISTO ,
+    RECHAZADO ,
+    EN_CAMINO,
     ENTREGADO
+
 }
