@@ -27,6 +27,5 @@ public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,
     @Query("UPDATE StockInsumoSucursal s SET s.stock_actual = :nuevoStock " +
             "WHERE s.articulo_insumo.id = :insumoId AND s.sucursal.id = :sucursalId AND s.eliminado = false")
     void actualizarStock(Long insumoId, Long sucursalId, int nuevoStock);
-
-
+    
 }

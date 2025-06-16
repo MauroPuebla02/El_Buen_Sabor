@@ -1,5 +1,6 @@
 package ElBuenSabor.UTN.Repository;
 
+import ElBuenSabor.UTN.Models.Model.Rol;
 import ElBuenSabor.UTN.Models.Model.Usuario;
 import ElBuenSabor.UTN.Models.ProjectionDTO.ClienteRankingProjectionDTO;
 import org.springframework.data.domain.Pageable;
@@ -25,4 +26,9 @@ public interface UsuarioRepository extends BaseRepository<Usuario, Long> {
     ORDER BY pedidos DESC
 """)
     List<ClienteRankingProjectionDTO> getRankingClientes(LocalDate desde, LocalDate hasta, Pageable pageable);
+    // Clientes
+    List<Usuario> findByRol(Rol rol);
+
+    // Empleados
+    List<Usuario> findByRolIn(List<Rol> roles);
 }
