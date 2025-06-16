@@ -21,7 +21,7 @@ import java.util.List;
 public class Pedido extends EntityBean{
     private LocalTime hora_estimada_finalizacion;
     private double total;
-    private Estado estado_pedido;
+    private Estado estado_pedido = Estado.PENDIENTE;
     private TipoEnvio tipo_envio;
     @Column(columnDefinition = "FLOAT DEFAULT 0")
     private double descuento;
