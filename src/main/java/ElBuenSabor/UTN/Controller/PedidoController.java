@@ -1,7 +1,6 @@
 package ElBuenSabor.UTN.Controller;
 
 import ElBuenSabor.UTN.Models.DTO.PedidoHistorialClienteDTO;
-import ElBuenSabor.UTN.Models.DTO.ArticuloManufacturadoByCategoriaDTO;
 import ElBuenSabor.UTN.Models.DTO.ArticuloManufacturadoPedidoDTO;
 import ElBuenSabor.UTN.Models.DTO.EstadoUpdateRequestDTO;
 import ElBuenSabor.UTN.Models.Model.Pedido;
@@ -10,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/pedidos")

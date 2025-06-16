@@ -21,7 +21,7 @@ public class Usuario extends EntityBean{
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "usuario_domicilio",
             joinColumns = @JoinColumn(name = "usuario_id"),

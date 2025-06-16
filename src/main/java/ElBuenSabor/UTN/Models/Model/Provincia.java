@@ -20,7 +20,7 @@ public class Provincia extends EntityBean {
     @OneToMany(mappedBy="provincia",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Localidad> localidades;
 
-    @ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pais_id")
     private Pais pais;
 }

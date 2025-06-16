@@ -7,6 +7,7 @@ import ElBuenSabor.UTN.Service.BaseServiceImpl;
 import ElBuenSabor.UTN.Service.Interface.iDomicilioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class DomicilioServiceImpl extends BaseServiceImpl<Domicilio, Long> implements iDomicilioService {
@@ -14,4 +15,7 @@ public class DomicilioServiceImpl extends BaseServiceImpl<Domicilio, Long> imple
     private DomicilioRepository repository;
     public DomicilioServiceImpl(BaseRepository<Domicilio, Long> baseRepository) {super(baseRepository);}
 
+    public List<Domicilio> getDomiciliosPorUsuario(Long idUsuario){
+        return repository.getDomiciliosPorUsuario(idUsuario);
+    }
 }

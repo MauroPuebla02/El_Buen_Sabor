@@ -18,7 +18,7 @@ import java.util.List;
 @SuperBuilder
 @Entity
 public class Domicilio extends EntityBean{
-    private String calle;
+    private String calle,tipo;
     private Integer numero,cp;
 
     @ManyToOne

@@ -2,7 +2,6 @@ package ElBuenSabor.UTN.Service.Implements;
 
 import ElBuenSabor.UTN.Models.DTO.PedidoHistorialClienteDTO;
 import ElBuenSabor.UTN.Models.DTO.ArticuloManufacturadoPedidoDTO;
-import ElBuenSabor.UTN.Models.Model.ArticuloManufacturado;
 import ElBuenSabor.UTN.Models.Model.Estado;
 import ElBuenSabor.UTN.Models.Model.Pedido;
 import ElBuenSabor.UTN.Models.Mappers.PedidoHistorialClienteMapper;
