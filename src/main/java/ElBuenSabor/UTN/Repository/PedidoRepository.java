@@ -51,4 +51,6 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long> {
     ORDER BY cantidadVendida DESC
 """)
     List<ProductoChartProjectionDTO> getProductosMasVendidos(@Param("desde")LocalDate desde, @Param("hasta")LocalDate hasta, Pageable pageable);
+
+    List<Pedido> findByUsuarioId(Long idCliente, Pageable pageable);
 }
