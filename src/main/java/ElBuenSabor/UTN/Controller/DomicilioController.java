@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("domicilios")
+@RequestMapping("/domicilios")
 public class DomicilioController extends BaseControllerImpl<Domicilio, DomicilioServiceImpl>{
     public DomicilioController(DomicilioServiceImpl service) {super(service);}
     @GetMapping(value="/ByUsuario/{idUsuario}")

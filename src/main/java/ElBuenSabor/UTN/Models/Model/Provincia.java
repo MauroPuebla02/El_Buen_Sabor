@@ -1,4 +1,7 @@
 package ElBuenSabor.UTN.Models.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,10 +20,8 @@ import java.util.List;
 public class Provincia extends EntityBean {
     private String nombre;
 
-    @OneToMany(mappedBy="provincia",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Localidad> localidades;
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "pais_id")
+    @JsonIgnoreProperties({"provincias"})
     private Pais pais;
 }

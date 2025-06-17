@@ -3,9 +3,10 @@ package ElBuenSabor.UTN.Repository;
 import ElBuenSabor.UTN.Models.Model.Domicilio;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface DomicilioRepository extends BaseRepository<Domicilio,Long> {
     @Query(value= """
         SELECT D.ID, D.ELIMINADO, D.CALLE , D.CP , D.NUMERO , D.LOCALIDAD_ID , D.TIPO  FROM DOMICILIO AS D
