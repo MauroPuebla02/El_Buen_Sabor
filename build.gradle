@@ -61,6 +61,7 @@ dependencies {
 
 	//Mercado Pago
 	implementation "com.mercadopago:sdk-java:2.5.0"
+
 }
 
 tasks.named('test') {
