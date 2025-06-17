@@ -19,7 +19,7 @@ public class Sucursal extends EntityBean{
     private String nombre;
     private LocalTime horario_apertura, horario_cierre;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
 

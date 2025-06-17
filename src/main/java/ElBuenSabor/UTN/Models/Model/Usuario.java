@@ -21,7 +21,10 @@ public class Usuario extends EntityBean{
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade = { CascadeType.PERSIST, CascadeType.MERGE }
+    )
     @JoinTable(
             name = "usuario_domicilio",
             joinColumns = @JoinColumn(name = "usuario_id"),
@@ -36,7 +39,8 @@ public class Usuario extends EntityBean{
     @JoinColumn(name = "usuario_a0_id")
     private UsuarioA0 usuario_A0;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER,
+            cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "imagen_id")
     private Imagen imagen;
 

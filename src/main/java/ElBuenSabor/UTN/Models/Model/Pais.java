@@ -1,4 +1,5 @@
 package ElBuenSabor.UTN.Models.Model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,4 @@ import java.util.List;
 public class Pais extends EntityBean{
     private String nombre;
 
-    @OneToMany(mappedBy = "pais")
-    private List<Provincia> provincias;
 }
