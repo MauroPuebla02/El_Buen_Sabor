@@ -94,4 +94,11 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long> {
     @Query("UPDATE Pedido p SET p.estado_pedido = :nuevoEstado " +
             "WHERE p.id = :id AND p.eliminado = false")
     void actualizarEstado(Long id, Estado nuevoEstado);
+
+ @Modifying
+ @Transactional
+ @Query("UPDATE Pedido p SET p.repartidor.id = :idDelivery " +
+         "WHERE p.id = :id AND p.eliminado = false")
+ void actualizarDelivery(@Param("id") Long id, @Param("idDelivery") Long idDelivery);
+
 }

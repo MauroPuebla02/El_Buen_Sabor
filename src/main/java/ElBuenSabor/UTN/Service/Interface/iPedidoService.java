@@ -13,4 +13,5 @@ public interface iPedidoService extends iBaseService<Pedido, Long> {
     List<ArticuloManufacturadoPedidoDTO> findAllArticuloManufacturadoByPedido(Long pedidoId);
 
     void actualizarEstado(Long id, Estado nuevoEstado);
+    void actualizarDelivery(Long id, Long idDelivery);
 }

@@ -3,11 +3,15 @@ package ElBuenSabor.UTN.Controller;
 import ElBuenSabor.UTN.Models.DTO.PedidoHistorialClienteDTO;
 import ElBuenSabor.UTN.Models.DTO.ArticuloManufacturadoPedidoDTO;
 import ElBuenSabor.UTN.Models.DTO.EstadoUpdateRequestDTO;
+import ElBuenSabor.UTN.Models.DTO.UpdatePedidoDTO;
 import ElBuenSabor.UTN.Models.Model.Pedido;
+import ElBuenSabor.UTN.Models.Model.Usuario;
 import ElBuenSabor.UTN.Service.Implements.PedidoServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 
 
@@ -35,4 +39,11 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
         service.actualizarEstado(id, dto.getEstadoPedido());
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/pedido/repartidor")
+    public ResponseEntity<?> actualizarRepartidor(@RequestBody UpdatePedidoDTO dto) {
+        service.actualizarDelivery(dto.getIdPedido(), dto.getIdDelivery());
+        return ResponseEntity.ok().build();
+    }
+
 }
