@@ -16,7 +16,7 @@ import java.util.List;
 @SuperBuilder
 @Entity
 public class Usuario extends EntityBean{
-    private String nombre,apellido,telefono,email;
+    private String nombre,apellido,telefono,email,Password;
     private LocalDate fecha_nacimiento;
     @Enumerated(EnumType.STRING)
     private Rol rol;
