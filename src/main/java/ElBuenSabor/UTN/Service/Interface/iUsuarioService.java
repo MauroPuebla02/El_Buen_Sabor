@@ -21,4 +21,6 @@ public interface iUsuarioService extends iBaseService<Usuario, Long> {
 
     Usuario login(LoginDTO dto);
 
+    Usuario registrarDesdeEntidad(Usuario usuario);
+
 }

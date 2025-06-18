@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,6 +18,8 @@ import java.util.List;
 @Setter
 @SuperBuilder
 @Entity
+@SQLDelete(sql = "UPDATE usuario SET eliminado = true WHERE id = ?")
+@Where(clause = "eliminado = false")
 public class Usuario extends EntityBean{
     private String nombre,apellido,telefono,email,Password;
     private LocalDate fecha_nacimiento;

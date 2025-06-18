@@ -67,4 +67,17 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
         return usuario;
     }
 
+    @Override
+    public Usuario registrarDesdeEntidad(Usuario usuario) {
+        if (usuario.getPassword() != null && !usuario.getPassword().isEmpty()) {
+            usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        }
+
+        // Verificación opcional si ya existe el email
+        if (repository.existsByEmail(usuario.getEmail())) {
+            throw new RuntimeException("Ya existe un usuario con ese email.");
+        }
+
+        return repository.save(usuario);
+    }
 }
