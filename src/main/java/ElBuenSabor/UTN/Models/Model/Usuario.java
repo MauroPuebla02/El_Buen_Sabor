@@ -23,7 +23,7 @@ public class Usuario extends EntityBean{
 
     @ManyToMany(
             fetch = FetchType.EAGER,
-            cascade = { CascadeType.PERSIST, CascadeType.MERGE }
+            cascade ={CascadeType.MERGE }
     )
     @JoinTable(
             name = "usuario_domicilio",
