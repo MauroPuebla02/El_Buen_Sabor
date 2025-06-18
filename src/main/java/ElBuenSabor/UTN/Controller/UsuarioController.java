@@ -19,8 +19,6 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
         super(service);
     }
 
-
-
     @GetMapping("/clientes")
     public ResponseEntity<List<Usuario>> getClientes() {
         return ResponseEntity.ok(service.obtenerClientes());
@@ -48,5 +46,10 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
         return ResponseEntity.ok(usuario);
     }
 
+    @PostMapping("/registrarEncriptado")
+    public ResponseEntity<?> registrarUsuarioDirecto(@RequestBody Usuario usuario) {
+        Usuario u = service.registrarDesdeEntidad(usuario);
+        return ResponseEntity.ok(u);
+    }
 
 }

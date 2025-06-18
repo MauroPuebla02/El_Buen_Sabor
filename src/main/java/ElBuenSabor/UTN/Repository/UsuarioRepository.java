@@ -35,5 +35,6 @@ public interface UsuarioRepository extends BaseRepository<Usuario, Long> {
 
     Optional<Usuario> findByEmail(String email); // para validar duplicados
 
+    boolean existsByEmail(String email);
 
 }
