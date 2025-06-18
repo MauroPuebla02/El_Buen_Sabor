@@ -42,8 +42,9 @@ public class Pedido extends EntityBean{
 
     @OneToMany(mappedBy = "pedido",
             cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    @JsonManagedReference("detalle-pedido")
+            orphanRemoval = true,
+    fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<PedidoDetalle> detalles;
 
     @ManyToOne
