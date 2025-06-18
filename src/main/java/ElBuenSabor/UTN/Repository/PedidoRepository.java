@@ -50,7 +50,7 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long> {
 """, nativeQuery = true)
     RendimientoChartProjectionDTO getRendimientosSinCosto(@Param("desde")LocalDate desde, @Param("hasta") LocalDate hasta);
     @Query("""
-    SELECT 
+    SELECT\s
         am.id AS id,
         am.denominacion AS denominacion,
         am.precio_venta AS precioVenta,
@@ -60,6 +60,20 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long> {
     JOIN p.detalles pd
     JOIN TREAT(pd.articulo AS ArticuloManufacturado) am
     WHERE p.id = :pedidoId
+    
+    UNION
+    
+    SELECT\s
+        ai.id AS id,
+        ai.denominacion AS denominacion,
+        ai.precio_venta AS precioVenta,
+        pd.cantidad AS cantidad,
+        pd.subtotal AS subtotal
+    FROM Pedido p
+    JOIN p.detalles pd
+    JOIN TREAT(pd.articulo AS ArticuloInsumo) ai
+    WHERE p.id = :pedidoId AND ai.es_para_elaborar = false
+    
 """)
     List<ArticuloManufacturadoPedidoDTO> findAllArticuloManufacturadoByPedido(@Param("pedidoId") Long pedidoId);
 
