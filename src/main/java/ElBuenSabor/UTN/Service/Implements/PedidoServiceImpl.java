@@ -40,4 +40,8 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
 
          repository.actualizarEstado(id,nuevoEstado);
     }
+    public void actualizarDelivery(Long id, Long idDelivery) {
+
+        repository.actualizarDelivery(id,idDelivery);
+    }
 }
