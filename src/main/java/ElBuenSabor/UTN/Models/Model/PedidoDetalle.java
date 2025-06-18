@@ -23,7 +23,7 @@ public class PedidoDetalle extends EntityBean{
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
-    @JsonBackReference("detalle-pedido")
+    @JsonBackReference
     private Pedido pedido;
 
     @ManyToOne
