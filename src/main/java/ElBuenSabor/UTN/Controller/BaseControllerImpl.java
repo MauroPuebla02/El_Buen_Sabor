@@ -1,6 +1,8 @@
 package ElBuenSabor.UTN.Controller;
 
 import ElBuenSabor.UTN.Models.Model.EntityBean;
+import ElBuenSabor.UTN.Models.Model.Pedido;
+import ElBuenSabor.UTN.Models.Model.Usuario;
 import ElBuenSabor.UTN.Service.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Map;
 
 
 public abstract class BaseControllerImpl<E extends EntityBean, S extends BaseServiceImpl<E,Long>> implements BaseController<E, Long> {

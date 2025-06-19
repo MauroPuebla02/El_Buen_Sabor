@@ -48,5 +48,10 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
         return ResponseEntity.ok(usuario);
     }
 
+    @PostMapping("/registrarEncriptado")
+    public ResponseEntity<?> registrarUsuarioDirecto(@RequestBody Usuario usuario) {
+        Usuario u = service.registrarDesdeEntidad(usuario);
+        return ResponseEntity.ok(u);
+    }
 
 }
