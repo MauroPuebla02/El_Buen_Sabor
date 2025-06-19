@@ -1,10 +1,10 @@
-# 🍽️ El Buen Sabor - API [important]
+# 🍽️ El Buen Sabor - API
 
-[info] **El Buen Sabor** es un sistema fullstack desarrollado por un equipo de estudiantes, que busca digitalizar la gestión integral de un restaurante moderno. A través de esta API RESTful construida con **Java 21** y **Spring Boot 3.5.0**, se administra el ciclo completo de operaciones: productos, recetas, stock, usuarios, pedidos, pagos online y sucursales.
+ **El Buen Sabor** es un sistema fullstack desarrollado por un equipo de estudiantes, que busca digitalizar la gestión integral de un restaurante moderno. A través de esta API RESTful construida con **Java 21** y **Spring Boot 3.5.0**, se administra el ciclo completo de operaciones: productos, recetas, stock, usuarios, pedidos, pagos online y sucursales.
 
 ---
 
-## 🛠️ Tecnologías y arquitectura [info]
+## 🛠️ Tecnologías y arquitectura 
 
 El backend de El Buen Sabor está desarrollado sobre una arquitectura por capas bien definida, que garantiza una separación de responsabilidades, mantenibilidad y escalabilidad.
 
@@ -27,7 +27,7 @@ El backend de El Buen Sabor está desarrollado sobre una arquitectura por capas 
 
 ---
 
-## ✨ Características principales [important]
+## ✨ Características principales
 
 - 📦 Gestión de productos, recetas e insumos
 - 🧾 Pedidos con seguimiento de estado (`PENDIENTE` → `ENTREGADO`)
@@ -40,7 +40,7 @@ El backend de El Buen Sabor está desarrollado sobre una arquitectura por capas 
 
 ---
 
-## ⚙️ Instrucciones de instalación y ejecución [info]
+## ⚙️ Instrucciones de instalación y ejecución
 
 ### 📌 Requisitos previos
 - Java 21
@@ -62,7 +62,7 @@ cd El_Buen_Sabor
 
 ---
 
-## 🧩 Módulos y paquetes [info]
+## 🧩 Módulos y paquetes
 
 | Módulo | Descripción |
 |--------|-------------|
@@ -77,7 +77,7 @@ cd El_Buen_Sabor
 
 ---
 
-## 🧑‍💻 Integrantes del grupo [important]
+## 🧑‍💻 Integrantes del grupo
 
 | Nombre | GitHub |
 |--------|--------|
@@ -89,6 +89,6 @@ cd El_Buen_Sabor
 
 ---
 
-## 📎 Repositorio [info]
+## 📎 Repositorio
 - 🔗 [El Buen Sabor - Backend (GitHub)](https://github.com/MauroPuebla02/El_Buen_Sabor)
 - 🔗 [El Buen Sabor - Frontend (GitHub)](https://github.com/FedeDAnna/El_Buen_Sabor_front)
