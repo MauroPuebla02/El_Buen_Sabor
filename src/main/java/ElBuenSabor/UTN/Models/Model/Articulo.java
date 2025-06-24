@@ -56,4 +56,6 @@ public abstract class Articulo extends EntityBean{
         this.id = id;
     }
 
+
+
 }
