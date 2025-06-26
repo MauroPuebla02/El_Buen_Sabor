@@ -1,34 +1,36 @@
 package ElBuenSabor.UTN.Models.Model;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @SuperBuilder
 @Entity
-public class PedidoDetalle extends EntityBean{
-    private Integer cantidad;
-    private double subtotal;
+@Table(name = "promocion_detalle")
+@SQLDelete(sql    = "UPDATE promocion_detalle SET eliminado = true WHERE id = ?")
+@Where(clause  = "eliminado = false")
+public class PromocionDetalle extends EntityBean{
+    private int cantidad;
 
     @ManyToOne
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name ="promocion_id")
     @JsonBackReference
-    private Pedido pedido;
+    private Promocion promocion;
 
     @ManyToOne
     @JoinColumn(name = "articulo_id")
     private Articulo articulo;
-
-
 }
