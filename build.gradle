@@ -54,6 +54,8 @@ dependencies {
 	// SpringDoc OpenAPI UI (Swagger UI + endpoints /v3/api-docs, /swagger-ui.html)
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.8'
 
+	//Apache POI
+	implementation 'org.apache.poi:poi-ooxml:5.2.3'
 	// Testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
