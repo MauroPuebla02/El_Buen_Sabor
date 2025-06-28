@@ -6,6 +6,7 @@ import ElBuenSabor.UTN.Repository.CategoriaRepository;
 import ElBuenSabor.UTN.Service.BaseServiceImpl;
 import ElBuenSabor.UTN.Service.Interface.iCategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class CategoriaServiceImpl extends BaseServiceImpl<Categoria, Long>  impl
     private CategoriaRepository repository;
 
     public CategoriaServiceImpl(BaseRepository <Categoria,Long>baseRepository) {super(baseRepository); }
-
+    @Cacheable("ventas")
     public List<Categoria> findCategoriaParaVentas() {
         return repository.findCategoriaParaVentas();
     }

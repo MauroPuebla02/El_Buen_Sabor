@@ -2,6 +2,7 @@ package ElBuenSabor.UTN.Controller;
 
 import ElBuenSabor.UTN.Models.Model.Categoria;
 import ElBuenSabor.UTN.Service.Implements.CategoriaServiceImpl;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class CategoriaController extends BaseControllerImpl<Categoria, Categoria
     public CategoriaController(CategoriaServiceImpl service) {
         super(service);
     }
+
 
     @GetMapping(value="/ventas")
     public List<Categoria> findCategoriaParaVentas(){
