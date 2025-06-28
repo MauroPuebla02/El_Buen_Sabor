@@ -16,9 +16,11 @@ public class TipoPromocionServiceImpl extends BaseServiceImpl<TipoPromocion, Lon
     @Autowired
     private TipoPromocionRepository repository;
     public TipoPromocionServiceImpl(BaseRepository<TipoPromocion, Long> baseRepository) {super(baseRepository);}
+    /*
     @Cacheable("promociones")
     @Override
     public List<TipoPromocion> findAll() {
         return repository.findAll();
     }
+    */
 }
