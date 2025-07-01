@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class StockUpdateRequest {
     private Long sucursalId;
-    private Integer stockActual;
+    private double stockActual;
 
 
 }
