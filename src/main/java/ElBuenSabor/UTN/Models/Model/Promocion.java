@@ -25,7 +25,7 @@ public class Promocion extends EntityBean{
     private String denominacion,descripcion_descuento;
     private LocalDate fecha_desde,fecha_hasta;
     private LocalTime hora_desde,hora_hasta;
-    private double precio_promocional;
+    private double precio_promocional,porc_descuento ;
 
     @ManyToOne
     @JoinColumn(name = "tipo_promocion_id")
