@@ -50,7 +50,6 @@ dependencies {
 
 	// Jackson Hibernate Module (para serializar entidades JPA)
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate6:2.15.2'
-
 	// SpringDoc OpenAPI UI (Swagger UI + endpoints /v3/api-docs, /swagger-ui.html)
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.8'
 
@@ -70,6 +69,10 @@ dependencies {
 	implementation 'com.github.ben-manes.caffeine:caffeine:3.1.6'
 
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	// WebSocket con STOMP
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
 }
 
 tasks.named('test') {

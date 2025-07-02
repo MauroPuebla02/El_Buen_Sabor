@@ -1,5 +1,6 @@
 package ElBuenSabor.UTN.Service.Implements;
 
+import ElBuenSabor.UTN.Models.DTO.PedidoEstadoDTO;
 import ElBuenSabor.UTN.Models.DTO.PedidoHistorialClienteDTO;
 import ElBuenSabor.UTN.Models.DTO.ArticuloManufacturadoPedidoDTO;
 import ElBuenSabor.UTN.Models.Model.Estado;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -43,5 +45,13 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
     public void actualizarDelivery(Long id, Long idDelivery) {
 
         repository.actualizarDelivery(id,idDelivery);
+    }
+
+    public PedidoEstadoDTO toEstadoDTO(Pedido p) {
+        return new PedidoEstadoDTO(
+                p.getId(),
+                p.getEstado_pedido(),
+                LocalDateTime.now()   // sólo para notificación
+        );
     }
 }
