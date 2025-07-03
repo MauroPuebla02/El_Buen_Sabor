@@ -25,7 +25,7 @@ public interface CategoriaRepository extends BaseRepository<Categoria, Long>{
     @Query(value = """ 
         SELECT * FROM Categoria
         WHERE ELIMINADO=FALSE AND Tipo_categoria_id = 2
-        UNION ALL
+        UNION
         SELECT C.* FROM CATEGORIA  AS C
         LEFT JOIN ARTICULO AS A
         ON A.CATEGORIA_ID = C.ID
