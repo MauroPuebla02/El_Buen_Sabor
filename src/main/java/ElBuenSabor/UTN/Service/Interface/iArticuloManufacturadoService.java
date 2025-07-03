@@ -1,5 +1,6 @@
 package ElBuenSabor.UTN.Service.Interface;
 
+import ElBuenSabor.UTN.Models.Model.Articulo;
 import ElBuenSabor.UTN.Models.Model.ArticuloManufacturado;
 import ElBuenSabor.UTN.Service.iBaseService;
 
@@ -10,4 +11,6 @@ public interface iArticuloManufacturadoService extends iBaseService<ArticuloManu
     List<ArticuloManufacturado> findArticulosManufacturadosByCategoria(Long idCategoria);
 
     ArticuloManufacturado getArticuloManufacturadoPorId(Long id);
+
+    List<Articulo> findArticulosManufacturadoConInsumos();
 }

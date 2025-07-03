@@ -1,20 +1,25 @@
 package ElBuenSabor.UTN.Controller;
 
-import ElBuenSabor.UTN.Models.DTO.PedidoHistorialClienteDTO;
-import ElBuenSabor.UTN.Models.DTO.ArticuloManufacturadoPedidoDTO;
-import ElBuenSabor.UTN.Models.DTO.EstadoUpdateRequestDTO;
+import ElBuenSabor.UTN.Models.DTO.*;
 import ElBuenSabor.UTN.Models.Model.Pedido;
+import ElBuenSabor.UTN.Models.Model.Usuario;
 import ElBuenSabor.UTN.Service.Implements.PedidoServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 
 
 @RestController
 @RequestMapping("/pedidos")
 public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceImpl>{
-    public PedidoController(PedidoServiceImpl service) {super(service);}
+    private final SimpMessagingTemplate messagingTemplate;
+    @Autowired
+    public PedidoController(PedidoServiceImpl service, SimpMessagingTemplate messagingTemplate) {super(service);this.messagingTemplate = messagingTemplate;}
 
     @GetMapping(value = "/byClientes/{idCliente}")
     public List<PedidoHistorialClienteDTO> getPedidoPorClientePaginado(
@@ -30,9 +35,27 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
     }
 
     @PatchMapping("/pedido/{pedidoId}")
-    public ResponseEntity<?> actualizarEstado(@PathVariable("pedidoId") Long id,
-                                                   @RequestBody EstadoUpdateRequestDTO dto) {
-        service.actualizarEstado(id, dto.getEstadoPedido());
+    public ResponseEntity<?> actualizarEstado(@PathVariable Long pedidoId,
+                                              @RequestBody EstadoUpdateRequestDTO req) {
+        service.actualizarEstado(pedidoId, req.getEstadoPedido());
+
+        Pedido pedido = service.findById(pedidoId);
+        PedidoEstadoDTO dto = service.toEstadoDTO(pedido);
+
+        // 3) Broadcast a todos los empleados
+        messagingTemplate.convertAndSend("/topic/pedidos", dto);
+
+        // 4) Notificación solo al cliente que creó el pedido
+        Long clienteId = pedido.getUsuario().getId();
+        messagingTemplate.convertAndSend("/topic/pedidos/cliente/" + clienteId, dto);
+
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/pedido/repartidor")
+    public ResponseEntity<?> actualizarRepartidor(@RequestBody UpdatePedidoDTO dto) {
+        service.actualizarDelivery(dto.getIdPedido(), dto.getIdDelivery());
+        return ResponseEntity.ok().build();
+    }
+
 }

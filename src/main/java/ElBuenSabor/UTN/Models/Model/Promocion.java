@@ -1,4 +1,5 @@
 package ElBuenSabor.UTN.Models.Model;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +25,7 @@ public class Promocion extends EntityBean{
     private String denominacion,descripcion_descuento;
     private LocalDate fecha_desde,fecha_hasta;
     private LocalTime hora_desde,hora_hasta;
-    private double precio_promocional;
+    private double precio_promocional,porc_descuento ;
 
     @ManyToOne
     @JoinColumn(name = "tipo_promocion_id")
@@ -33,13 +34,9 @@ public class Promocion extends EntityBean{
     @ManyToMany(mappedBy = "promociones")
     private List<Sucursal> sucursales;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "promocion_articulo",
-            joinColumns = @JoinColumn(name = "promocion_id"),
-            inverseJoinColumns = @JoinColumn(name = "articulo_id")
-    )
-    private List<Articulo> articulos;
+    @OneToMany(mappedBy = "promocion", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<PromocionDetalle> detalles;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "imagen_id")

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UsuarioRepository extends BaseRepository<Usuario, Long> {
@@ -31,4 +32,9 @@ public interface UsuarioRepository extends BaseRepository<Usuario, Long> {
 
     // Empleados
     List<Usuario> findByRolIn(List<Rol> roles);
+
+    Optional<Usuario> findByEmail(String email); // para validar duplicados
+
+    boolean existsByEmail(String email);
+
 }

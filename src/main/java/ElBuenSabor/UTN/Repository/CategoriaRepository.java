@@ -4,9 +4,10 @@ import ElBuenSabor.UTN.Models.Model.Categoria;
 import ElBuenSabor.UTN.Models.Model.TipoCategoria;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface CategoriaRepository extends BaseRepository<Categoria, Long>{
 
     @Query("""

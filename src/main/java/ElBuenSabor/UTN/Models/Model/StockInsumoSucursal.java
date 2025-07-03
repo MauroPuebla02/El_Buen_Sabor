@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 public class StockInsumoSucursal extends EntityBean{
 
     private BigDecimal precio_compra;
-    private Integer stock_actual,stock_minimo,stock_maximo;
+    private Double stock_actual,stock_minimo,stock_maximo;
 
     @ManyToOne
     @JoinColumn(name = "sucursal_id")

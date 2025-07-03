@@ -23,7 +23,14 @@ import java.util.List;
 public class ArticuloManufacturado extends Articulo {
     @Column(name = "eliminado")
     boolean delete = false;
-    private String descripcion,preparacion;
+    @Lob
+    @Column(columnDefinition = "TEXT", nullable = true)
+    private String descripcion;
+
+    @Lob
+    @Column(columnDefinition = "TEXT", nullable = true)
+    private String preparacion;
+
     private Integer tiempo_estimado_en_minutos;
 
     @OneToMany(mappedBy = "articulo_manufacturado",cascade = CascadeType.ALL,orphanRemoval = true)

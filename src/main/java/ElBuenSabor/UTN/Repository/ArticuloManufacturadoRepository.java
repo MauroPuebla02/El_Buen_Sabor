@@ -48,4 +48,40 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
     """)
     ArticuloManufacturado getArticuloManufacturadoPorId(@Param("id") Long id);
 
+    @Query("""
+        SELECT DISTINCT am
+          FROM ArticuloManufacturado am
+          JOIN am.detalles filtro
+             WITH filtro.articulo_insumo.id = :insumoId
+         WHERE am.eliminado = false
+    """)
+    List<ArticuloManufacturado> findIdsPorInsumo(@Param("insumoId") Long insumoId);
+
+    @Query("""
+        SELECT DISTINCT am
+          FROM ArticuloManufacturado am
+          LEFT JOIN FETCH am.unidad_de_medida
+          LEFT JOIN FETCH am.imagen
+          LEFT JOIN FETCH am.detalles d
+          LEFT JOIN FETCH d.articulo_insumo ai
+          LEFT JOIN FETCH ai.stock_insumo_sucursales s
+         WHERE am.id IN :ids
+    """)
+    List<ArticuloManufacturado> findCompletoPorIds(@Param("ids") List<Long> ids);
+
+    // ————————
+    // Alternativa UN SOLO MÉTODO (Hibernate permite JOIN…WITH + FETCH JOIN)
+    @Query("""
+      SELECT DISTINCT am
+        FROM ArticuloManufacturado am
+        JOIN am.detalles filtro
+           WITH filtro.articulo_insumo.id = :insumoId
+        LEFT JOIN FETCH am.unidad_de_medida
+        LEFT JOIN FETCH am.imagen
+        LEFT JOIN FETCH am.detalles d
+        LEFT JOIN FETCH d.articulo_insumo ai
+        LEFT JOIN FETCH ai.stock_insumo_sucursales s
+       WHERE am.eliminado = false
+    """)
+    List<ArticuloManufacturado> findByInsumoConTodosLosDetalles(@Param("insumoId") Long insumoId);
 }

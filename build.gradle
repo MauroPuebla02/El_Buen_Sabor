@@ -50,10 +50,11 @@ dependencies {
 
 	// Jackson Hibernate Module (para serializar entidades JPA)
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate6:2.15.2'
-
 	// SpringDoc OpenAPI UI (Swagger UI + endpoints /v3/api-docs, /swagger-ui.html)
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.8'
 
+	//Apache POI
+	implementation 'org.apache.poi:poi-ooxml:5.2.3'
 	// Testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
@@ -61,6 +62,17 @@ dependencies {
 
 	//Mercado Pago
 	implementation "com.mercadopago:sdk-java:2.5.0"
+
+	// Spring Cache abstraction
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
+	// Caffeine cache library
+	implementation 'com.github.ben-manes.caffeine:caffeine:3.1.6'
+
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	// WebSocket con STOMP
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
 
 }
 

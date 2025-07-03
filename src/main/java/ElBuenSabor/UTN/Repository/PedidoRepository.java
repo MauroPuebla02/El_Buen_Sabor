@@ -16,10 +16,11 @@ import ElBuenSabor.UTN.Models.ProjectionDTO.RendimientoChartProjectionDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Repository
 public interface PedidoRepository extends BaseRepository<Pedido,Long> {
     @Query(value = """
     SELECT p.*
@@ -49,7 +50,7 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long> {
 """, nativeQuery = true)
     RendimientoChartProjectionDTO getRendimientosSinCosto(@Param("desde")LocalDate desde, @Param("hasta") LocalDate hasta);
     @Query("""
-    SELECT 
+    SELECT\s
         am.id AS id,
         am.denominacion AS denominacion,
         am.precio_venta AS precioVenta,
@@ -59,6 +60,20 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long> {
     JOIN p.detalles pd
     JOIN TREAT(pd.articulo AS ArticuloManufacturado) am
     WHERE p.id = :pedidoId
+    
+    UNION
+    
+    SELECT\s
+        ai.id AS id,
+        ai.denominacion AS denominacion,
+        ai.precio_venta AS precioVenta,
+        pd.cantidad AS cantidad,
+        pd.subtotal AS subtotal
+    FROM Pedido p
+    JOIN p.detalles pd
+    JOIN TREAT(pd.articulo AS ArticuloInsumo) ai
+    WHERE p.id = :pedidoId AND ai.es_para_elaborar = false
+    
 """)
     List<ArticuloManufacturadoPedidoDTO> findAllArticuloManufacturadoByPedido(@Param("pedidoId") Long pedidoId);
 
@@ -79,4 +94,11 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long> {
     @Query("UPDATE Pedido p SET p.estado_pedido = :nuevoEstado " +
             "WHERE p.id = :id AND p.eliminado = false")
     void actualizarEstado(Long id, Estado nuevoEstado);
+
+ @Modifying
+ @Transactional
+ @Query("UPDATE Pedido p SET p.repartidor.id = :idDelivery " +
+         "WHERE p.id = :id AND p.eliminado = false")
+ void actualizarDelivery(@Param("id") Long id, @Param("idDelivery") Long idDelivery);
+
 }

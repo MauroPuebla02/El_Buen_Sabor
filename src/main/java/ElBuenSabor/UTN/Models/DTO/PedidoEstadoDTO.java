@@ -6,12 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EstadoUpdateRequestDTO {
-    private Long id;
+public class PedidoEstadoDTO {
+    private Long idPedido;
     private Estado estadoPedido;
-
+    private LocalDateTime fechaModificacion;
 }

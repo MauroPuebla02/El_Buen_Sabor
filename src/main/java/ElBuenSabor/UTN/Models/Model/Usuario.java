@@ -1,10 +1,13 @@
 package ElBuenSabor.UTN.Models.Model;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,13 +18,18 @@ import java.util.List;
 @Setter
 @SuperBuilder
 @Entity
+@SQLDelete(sql = "UPDATE usuario SET eliminado = true WHERE id = ?")
+@Where(clause = "eliminado = false")
 public class Usuario extends EntityBean{
-    private String nombre,apellido,telefono,email;
+    private String nombre,apellido,telefono,email,Password;
     private LocalDate fecha_nacimiento;
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade ={CascadeType.MERGE }
+    )
     @JoinTable(
             name = "usuario_domicilio",
             joinColumns = @JoinColumn(name = "usuario_id"),
@@ -36,7 +44,8 @@ public class Usuario extends EntityBean{
     @JoinColumn(name = "usuario_a0_id")
     private UsuarioA0 usuario_A0;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER,
+            cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "imagen_id")
     private Imagen imagen;
 

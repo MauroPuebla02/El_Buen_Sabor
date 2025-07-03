@@ -9,5 +9,5 @@ public interface iArticuloInsumoService extends iBaseService<ArticuloInsumo, Lon
 
     List<ArticuloInsumo> findArticulosInsumosByCategoria(Long idCategoria);
 
-    void actualizarStock (Long insumoId, Long sucursalId, int nuevoStock);
+    void actualizarStock (Long insumoId, Long sucursalId, double nuevoStock);
 }
